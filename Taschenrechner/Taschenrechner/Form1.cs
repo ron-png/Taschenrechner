@@ -12,7 +12,7 @@ namespace Taschenrechner
 {
     public partial class Rechner : Form
     {
-        // Alle 10 Buttons kann man linken (wichtig!!!) 
+        // Alle 10 Buttons kann man linken
         // https://www.youtube.com/watch?v=SMtD308awME  <--- Video 
         // sehr hilfreich war https://github.com/windson/Calculator-Winforms/
         public Rechner()
