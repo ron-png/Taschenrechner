@@ -183,6 +183,7 @@
             this.buttonPlus.TabIndex = 13;
             this.buttonPlus.Text = "+";
             this.buttonPlus.UseVisualStyleBackColor = true;
+            this.buttonPlus.Click += new System.EventHandler(this.buttonMal_Click);
             // 
             // buttonMinus
             // 
@@ -192,6 +193,7 @@
             this.buttonMinus.TabIndex = 14;
             this.buttonMinus.Text = "-";
             this.buttonMinus.UseVisualStyleBackColor = true;
+            this.buttonMinus.Click += new System.EventHandler(this.buttonMal_Click);
             // 
             // buttonMal
             // 
@@ -201,6 +203,7 @@
             this.buttonMal.TabIndex = 15;
             this.buttonMal.Text = "*";
             this.buttonMal.UseVisualStyleBackColor = true;
+            this.buttonMal.Click += new System.EventHandler(this.buttonMal_Click);
             // 
             // buttonGeteilt
             // 
@@ -210,6 +213,7 @@
             this.buttonGeteilt.TabIndex = 16;
             this.buttonGeteilt.Text = "/";
             this.buttonGeteilt.UseVisualStyleBackColor = true;
+            this.buttonGeteilt.Click += new System.EventHandler(this.buttonMal_Click);
             // 
             // zahlenFeld
             // 
