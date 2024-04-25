@@ -242,7 +242,6 @@
             this.zahlenFeld.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.zahlenFeld.Location = new System.Drawing.Point(219, 48);
             this.zahlenFeld.Name = "zahlenFeld";
-            this.zahlenFeld.ReadOnly = true;
             this.zahlenFeld.Size = new System.Drawing.Size(320, 20);
             this.zahlenFeld.TabIndex = 21;
             this.zahlenFeld.TextChanged += new System.EventHandler(this.zahlenFeld_TextChanged);

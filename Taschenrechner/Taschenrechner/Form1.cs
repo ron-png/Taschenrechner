@@ -128,7 +128,7 @@ namespace Taschenrechner
                 static List<string> TokenizeFormula(string formula)
                 {
                     // Regulärer Ausdruck zum Tokenisieren der Formel
-                    string pattern = @"(\d+(\.\d+)?|\+|\-|\*|\/|\%|\(|\)|\^|\√|\-?\d+(\.\d+)?)";
+                    string pattern = @"(\d+(\,\d+)?|\+|\-|\*|\/|\%|\(|\)|\^|\√)";
                     MatchCollection matches = Regex.Matches(formula, pattern);
 
                     List<string> tokens = new List<string>();
