@@ -26,3 +26,13 @@ C:\Users\bob\Downloads\Taschenrechner-main\Taschenrechner-main\Taschenrechner\Ta
 C:\Users\bob\Downloads\Taschenrechner-main\Taschenrechner-main\Taschenrechner\Taschenrechner\obj\Debug\Taschenrechner.csproj.CoreCompileInputs.cache
 C:\Users\bob\Downloads\Taschenrechner-main\Taschenrechner-main\Taschenrechner\Taschenrechner\obj\Debug\Taschenrechner.exe
 C:\Users\bob\Downloads\Taschenrechner-main\Taschenrechner-main\Taschenrechner\Taschenrechner\obj\Debug\Taschenrechner.pdb
+C:\Users\a\Documents\GitHub\Taschenrechner\Taschenrechner\Taschenrechner\obj\Debug\Taschenrechner.csproj.AssemblyReference.cache
+C:\Users\a\Documents\GitHub\Taschenrechner\Taschenrechner\Taschenrechner\obj\Debug\Taschenrechner.Rechner.resources
+C:\Users\a\Documents\GitHub\Taschenrechner\Taschenrechner\Taschenrechner\obj\Debug\Taschenrechner.Properties.Resources.resources
+C:\Users\a\Documents\GitHub\Taschenrechner\Taschenrechner\Taschenrechner\obj\Debug\Taschenrechner.csproj.GenerateResource.cache
+C:\Users\a\Documents\GitHub\Taschenrechner\Taschenrechner\Taschenrechner\obj\Debug\Taschenrechner.csproj.CoreCompileInputs.cache
+C:\Users\a\Documents\GitHub\Taschenrechner\Taschenrechner\Taschenrechner\obj\Debug\Taschenrechner.exe
+C:\Users\a\Documents\GitHub\Taschenrechner\Taschenrechner\Taschenrechner\obj\Debug\Taschenrechner.pdb
+C:\Users\a\Documents\GitHub\Taschenrechner\Taschenrechner\Taschenrechner\bin\Debug\Taschenrechner.exe.config
+C:\Users\a\Documents\GitHub\Taschenrechner\Taschenrechner\Taschenrechner\bin\Debug\Taschenrechner.exe
+C:\Users\a\Documents\GitHub\Taschenrechner\Taschenrechner\Taschenrechner\bin\Debug\Taschenrechner.pdb
