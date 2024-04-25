@@ -78,7 +78,7 @@ namespace Taschenrechner
                                              //double berechnet = Convert.ToDouble(new DataTable().Compute(formel, null)); //Konvertiert dieses zu double und berechnet mit .Compute
                                              // berechnet = Math.Round(berechnet, 10);
                                              //zahlenFeld.Text = Convert.ToString(berechnet); //
-            formel = "0" + formel; // fuegt eine Null vorne dran, damit die negierung fuktioniert
+            formel = "0" + formel; // fuegt eine Null vorne dran, damit eine Minuszahl am Anfang fuktioniert
             bool nummerTest, operantTest;    //https://code-maze.com/csharp-identify-if-a-string-is-a-number/ um zu testen, ob nur eine Zahl eingegeben wurde
             nummerTest = double.TryParse(formel, out _);
             operantTest = char.IsDigit(formel.Last());//https://code-maze.com/csharp-check-if-string-ends-with-a-number/ um zu testen, ob die Formel mit einem Operanten endet
@@ -128,7 +128,7 @@ namespace Taschenrechner
                 static List<string> TokenizeFormula(string formula)
                 {
                     // Regulärer Ausdruck zum Tokenisieren der Formel
-                    string pattern = @"(\d+(\,\d+)?|\+|\-|\*|\/|\%|\(|\)|\^|\√)";
+                    string pattern = @"(\d+(\.\d+)?|\+|\-|\*|\/|\%|\(|\)|\^|\√|\-?\d+(\.\d+)?)";
                     MatchCollection matches = Regex.Matches(formula, pattern);
 
                     List<string> tokens = new List<string>();
@@ -273,6 +273,11 @@ namespace Taschenrechner
             {
 
             }
+        }
+
+        private void zahlenFeld_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
