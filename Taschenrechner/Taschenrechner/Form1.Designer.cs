@@ -167,6 +167,7 @@
             this.buttonKomma.TabIndex = 10;
             this.buttonKomma.Text = ",";
             this.buttonKomma.UseVisualStyleBackColor = true;
+            this.buttonKomma.Click += new System.EventHandler(this.buttonKomma_Click);
             // 
             // vorZeichen
             // 
@@ -239,7 +240,6 @@
             this.zahlenFeld.Name = "zahlenFeld";
             this.zahlenFeld.Size = new System.Drawing.Size(320, 20);
             this.zahlenFeld.TabIndex = 21;
-            this.zahlenFeld.TextChanged += new System.EventHandler(this.zahlenFeld_TextChanged);
             // 
             // Rechner
             // 
