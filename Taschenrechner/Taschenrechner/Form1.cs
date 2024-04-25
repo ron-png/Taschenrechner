@@ -21,6 +21,7 @@ namespace Taschenrechner
 
         
         int counter = 0; // counter wird gebraucht um zu zählen, ob die letzte Angabe ein rechenoperator war
+        int kommacounter = 0;
 
         public Rechner()
         {
@@ -51,6 +52,7 @@ namespace Taschenrechner
             {
                 this.zahlenFeld.Text += ((Button)sender).Text;
                 counter++;
+                kommacounter = 0;
             }
         }
 
@@ -77,9 +79,9 @@ namespace Taschenrechner
                                              // berechnet = Math.Round(berechnet, 10);
                                              //zahlenFeld.Text = Convert.ToString(berechnet); //
 
-            bool nummerTest, operantTest;    //https://code-maze.com/csharp-identify-if-a-string-is-a-number/ um zu testen, dass nur eine Zahl eingegeben wurde
+            bool nummerTest, operantTest;    //https://code-maze.com/csharp-identify-if-a-string-is-a-number/ um zu testen, ob nur eine Zahl eingegeben wurde
             nummerTest = double.TryParse(formel, out _);
-            operantTest = char.IsDigit(formel.Last());//https://code-maze.com/csharp-check-if-string-ends-with-a-number/ um zu testen, ob man die Berechnung mit einem Operanten beendet
+            operantTest = char.IsDigit(formel.Last());//https://code-maze.com/csharp-check-if-string-ends-with-a-number/ um zu testen, ob die Formel mit einem Operanten endet
             if (nummerTest || operantTest==false)
             {
                 // macht nichts, weil die Berechnung nicht ausgefuehrt werden kann
@@ -239,11 +241,23 @@ namespace Taschenrechner
 
         private void buttonKomma_Click(object sender, EventArgs e)
         {
-            if (counter == 0)
+            if (counter == 0 && kommacounter == 0)
             {
                 this.zahlenFeld.Text += ",";
                 counter++;
+                kommacounter++;
             }
+        }
+
+        private void backspace_Click(object sender, EventArgs e)
+        {
+            string formel = zahlenFeld.Text;
+            zahlenFeld.Text = formel.Remove(formel.Length - 1, 1); //https://www.c-sharpcorner.com/blogs/remove-last-character-from-string-in-c-sharp1
+        }
+
+        private void c_Click(object sender, EventArgs e)
+        {
+            zahlenFeld.Text = ""; // entfernt den ganzen Textinhalt
         }
     }
 }
