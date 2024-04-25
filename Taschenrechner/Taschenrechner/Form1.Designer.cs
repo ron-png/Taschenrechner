@@ -50,9 +50,10 @@
             // 
             // zahl1
             // 
-            this.zahl1.Location = new System.Drawing.Point(219, 270);
+            this.zahl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zahl1.Location = new System.Drawing.Point(219, 153);
             this.zahl1.Name = "zahl1";
-            this.zahl1.Size = new System.Drawing.Size(75, 23);
+            this.zahl1.Size = new System.Drawing.Size(75, 75);
             this.zahl1.TabIndex = 0;
             this.zahl1.Text = "1";
             this.zahl1.UseVisualStyleBackColor = true;
@@ -60,9 +61,10 @@
             // 
             // zahl2
             // 
-            this.zahl2.Location = new System.Drawing.Point(301, 269);
+            this.zahl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zahl2.Location = new System.Drawing.Point(301, 153);
             this.zahl2.Name = "zahl2";
-            this.zahl2.Size = new System.Drawing.Size(75, 23);
+            this.zahl2.Size = new System.Drawing.Size(75, 75);
             this.zahl2.TabIndex = 1;
             this.zahl2.Text = "2";
             this.zahl2.UseVisualStyleBackColor = true;
@@ -70,9 +72,10 @@
             // 
             // zahl3
             // 
-            this.zahl3.Location = new System.Drawing.Point(383, 269);
+            this.zahl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zahl3.Location = new System.Drawing.Point(383, 153);
             this.zahl3.Name = "zahl3";
-            this.zahl3.Size = new System.Drawing.Size(75, 23);
+            this.zahl3.Size = new System.Drawing.Size(75, 75);
             this.zahl3.TabIndex = 2;
             this.zahl3.Text = "3";
             this.zahl3.UseVisualStyleBackColor = true;
@@ -80,9 +83,10 @@
             // 
             // zahl4
             // 
-            this.zahl4.Location = new System.Drawing.Point(219, 300);
+            this.zahl4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zahl4.Location = new System.Drawing.Point(219, 234);
             this.zahl4.Name = "zahl4";
-            this.zahl4.Size = new System.Drawing.Size(75, 23);
+            this.zahl4.Size = new System.Drawing.Size(75, 75);
             this.zahl4.TabIndex = 3;
             this.zahl4.Text = "4";
             this.zahl4.UseVisualStyleBackColor = true;
@@ -90,9 +94,10 @@
             // 
             // zahl5
             // 
-            this.zahl5.Location = new System.Drawing.Point(301, 299);
+            this.zahl5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zahl5.Location = new System.Drawing.Point(302, 234);
             this.zahl5.Name = "zahl5";
-            this.zahl5.Size = new System.Drawing.Size(75, 23);
+            this.zahl5.Size = new System.Drawing.Size(75, 75);
             this.zahl5.TabIndex = 4;
             this.zahl5.Text = "5";
             this.zahl5.UseVisualStyleBackColor = true;
@@ -100,9 +105,10 @@
             // 
             // zahl6
             // 
-            this.zahl6.Location = new System.Drawing.Point(383, 299);
+            this.zahl6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zahl6.Location = new System.Drawing.Point(383, 234);
             this.zahl6.Name = "zahl6";
-            this.zahl6.Size = new System.Drawing.Size(75, 23);
+            this.zahl6.Size = new System.Drawing.Size(75, 75);
             this.zahl6.TabIndex = 5;
             this.zahl6.Text = "6";
             this.zahl6.UseVisualStyleBackColor = true;
@@ -110,9 +116,10 @@
             // 
             // zahl7
             // 
-            this.zahl7.Location = new System.Drawing.Point(219, 330);
+            this.zahl7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zahl7.Location = new System.Drawing.Point(221, 315);
             this.zahl7.Name = "zahl7";
-            this.zahl7.Size = new System.Drawing.Size(75, 23);
+            this.zahl7.Size = new System.Drawing.Size(75, 75);
             this.zahl7.TabIndex = 6;
             this.zahl7.Text = "7";
             this.zahl7.UseVisualStyleBackColor = true;
@@ -120,9 +127,10 @@
             // 
             // zahl8
             // 
-            this.zahl8.Location = new System.Drawing.Point(301, 329);
+            this.zahl8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zahl8.Location = new System.Drawing.Point(302, 315);
             this.zahl8.Name = "zahl8";
-            this.zahl8.Size = new System.Drawing.Size(75, 23);
+            this.zahl8.Size = new System.Drawing.Size(75, 75);
             this.zahl8.TabIndex = 7;
             this.zahl8.Text = "8";
             this.zahl8.UseVisualStyleBackColor = true;
@@ -130,9 +138,10 @@
             // 
             // zahl9
             // 
-            this.zahl9.Location = new System.Drawing.Point(383, 330);
+            this.zahl9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zahl9.Location = new System.Drawing.Point(383, 315);
             this.zahl9.Name = "zahl9";
-            this.zahl9.Size = new System.Drawing.Size(75, 23);
+            this.zahl9.Size = new System.Drawing.Size(75, 75);
             this.zahl9.TabIndex = 8;
             this.zahl9.Text = "9";
             this.zahl9.UseVisualStyleBackColor = true;
@@ -140,9 +149,10 @@
             // 
             // zahl0
             // 
-            this.zahl0.Location = new System.Drawing.Point(301, 359);
+            this.zahl0.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zahl0.Location = new System.Drawing.Point(302, 396);
             this.zahl0.Name = "zahl0";
-            this.zahl0.Size = new System.Drawing.Size(75, 23);
+            this.zahl0.Size = new System.Drawing.Size(75, 75);
             this.zahl0.TabIndex = 9;
             this.zahl0.Text = "0";
             this.zahl0.UseVisualStyleBackColor = true;
@@ -150,36 +160,41 @@
             // 
             // buttonKomma
             // 
-            this.buttonKomma.Location = new System.Drawing.Point(382, 359);
+            this.buttonKomma.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonKomma.Location = new System.Drawing.Point(383, 396);
             this.buttonKomma.Name = "buttonKomma";
-            this.buttonKomma.Size = new System.Drawing.Size(75, 23);
+            this.buttonKomma.Size = new System.Drawing.Size(75, 75);
             this.buttonKomma.TabIndex = 10;
             this.buttonKomma.Text = ",";
             this.buttonKomma.UseVisualStyleBackColor = true;
             // 
             // vorZeichen
             // 
-            this.vorZeichen.Location = new System.Drawing.Point(220, 359);
+            this.vorZeichen.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vorZeichen.Location = new System.Drawing.Point(221, 396);
             this.vorZeichen.Name = "vorZeichen";
-            this.vorZeichen.Size = new System.Drawing.Size(75, 23);
+            this.vorZeichen.Size = new System.Drawing.Size(75, 75);
             this.vorZeichen.TabIndex = 11;
             this.vorZeichen.Text = "+/-";
             this.vorZeichen.UseVisualStyleBackColor = true;
             // 
             // buttonGleich
             // 
-            this.buttonGleich.Location = new System.Drawing.Point(464, 359);
+            this.buttonGleich.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGleich.Location = new System.Drawing.Point(545, 396);
             this.buttonGleich.Name = "buttonGleich";
-            this.buttonGleich.Size = new System.Drawing.Size(75, 23);
+            this.buttonGleich.Size = new System.Drawing.Size(75, 75);
             this.buttonGleich.TabIndex = 12;
             this.buttonGleich.Text = "=";
             this.buttonGleich.UseVisualStyleBackColor = true;
+            this.buttonGleich.Click += new System.EventHandler(this.buttonGleich_Click);
             // 
             // buttonPlus
             // 
-            this.buttonPlus.Location = new System.Drawing.Point(464, 330);
+            this.buttonPlus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPlus.Location = new System.Drawing.Point(464, 396);
             this.buttonPlus.Name = "buttonPlus";
-            this.buttonPlus.Size = new System.Drawing.Size(75, 23);
+            this.buttonPlus.Size = new System.Drawing.Size(75, 75);
             this.buttonPlus.TabIndex = 13;
             this.buttonPlus.Text = "+";
             this.buttonPlus.UseVisualStyleBackColor = true;
@@ -187,9 +202,10 @@
             // 
             // buttonMinus
             // 
-            this.buttonMinus.Location = new System.Drawing.Point(464, 300);
+            this.buttonMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMinus.Location = new System.Drawing.Point(464, 315);
             this.buttonMinus.Name = "buttonMinus";
-            this.buttonMinus.Size = new System.Drawing.Size(75, 23);
+            this.buttonMinus.Size = new System.Drawing.Size(75, 75);
             this.buttonMinus.TabIndex = 14;
             this.buttonMinus.Text = "-";
             this.buttonMinus.UseVisualStyleBackColor = true;
@@ -197,9 +213,10 @@
             // 
             // buttonMal
             // 
-            this.buttonMal.Location = new System.Drawing.Point(464, 269);
+            this.buttonMal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMal.Location = new System.Drawing.Point(464, 234);
             this.buttonMal.Name = "buttonMal";
-            this.buttonMal.Size = new System.Drawing.Size(75, 23);
+            this.buttonMal.Size = new System.Drawing.Size(75, 75);
             this.buttonMal.TabIndex = 15;
             this.buttonMal.Text = "*";
             this.buttonMal.UseVisualStyleBackColor = true;
@@ -207,9 +224,10 @@
             // 
             // buttonGeteilt
             // 
-            this.buttonGeteilt.Location = new System.Drawing.Point(464, 240);
+            this.buttonGeteilt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGeteilt.Location = new System.Drawing.Point(464, 153);
             this.buttonGeteilt.Name = "buttonGeteilt";
-            this.buttonGeteilt.Size = new System.Drawing.Size(75, 23);
+            this.buttonGeteilt.Size = new System.Drawing.Size(75, 75);
             this.buttonGeteilt.TabIndex = 16;
             this.buttonGeteilt.Text = "/";
             this.buttonGeteilt.UseVisualStyleBackColor = true;
@@ -226,7 +244,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 586);
             this.Controls.Add(this.zahlenFeld);
             this.Controls.Add(this.buttonGeteilt);
             this.Controls.Add(this.buttonMal);

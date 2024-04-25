@@ -67,5 +67,19 @@ namespace Taschenrechner
         {
 
         }
+
+        private void buttonGleich_Click(object sender, EventArgs e)
+        {
+           
+            string formel = zahlenFeld.Text; // Speichert das String Feld in variable
+                                             //double berechnet = Convert.ToDouble(new DataTable().Compute(formel, null)); //Konvertiert dieses zu double und berechnet mit .Compute
+                                             // berechnet = Math.Round(berechnet, 10);
+                                             //zahlenFeld.Text = Convert.ToString(berechnet); //
+            decimal a = V;
+            decimal b = 12.341;
+
+            decimal v = decimal.Multiply(a, b);
+            zahlenFeld.Text = v.ToString();
+        }
     }
 }
