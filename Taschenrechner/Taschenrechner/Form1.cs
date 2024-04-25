@@ -78,7 +78,7 @@ namespace Taschenrechner
                                              //double berechnet = Convert.ToDouble(new DataTable().Compute(formel, null)); //Konvertiert dieses zu double und berechnet mit .Compute
                                              // berechnet = Math.Round(berechnet, 10);
                                              //zahlenFeld.Text = Convert.ToString(berechnet); //
-
+            formel = "0" + formel; // fuegt eine Null vorne dran, damit die negierung fuktioniert
             bool nummerTest, operantTest;    //https://code-maze.com/csharp-identify-if-a-string-is-a-number/ um zu testen, ob nur eine Zahl eingegeben wurde
             nummerTest = double.TryParse(formel, out _);
             operantTest = char.IsDigit(formel.Last());//https://code-maze.com/csharp-check-if-string-ends-with-a-number/ um zu testen, ob die Formel mit einem Operanten endet
@@ -223,7 +223,7 @@ namespace Taschenrechner
                         case "/":
                             if (b == 0)
                             {
-                                throw new DivideByZeroException();
+                                return 0;
                             }
                             return a / b;
                         case "%":
@@ -252,7 +252,10 @@ namespace Taschenrechner
         private void backspace_Click(object sender, EventArgs e)
         {
             string formel = zahlenFeld.Text;
-            zahlenFeld.Text = formel.Remove(formel.Length - 1, 1); //https://www.c-sharpcorner.com/blogs/remove-last-character-from-string-in-c-sharp1
+            if (formel.Length > 0)
+            {
+                zahlenFeld.Text = formel.Remove(formel.Length - 1, 1); //https://www.c-sharpcorner.com/blogs/remove-last-character-from-string-in-c-sharp1
+            }            
         }
 
         private void c_Click(object sender, EventArgs e)
@@ -262,9 +265,14 @@ namespace Taschenrechner
 
         private void ce_Click(object sender, EventArgs e)
         {
-            var digits = new[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' }; https://stackoverflow.com/questions/27289054/removing-numbers-at-the-end-of-a-string-c-sharp
+            var digits = new[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',' }; // https://stackoverflow.com/questions/27289054/removing-numbers-at-the-end-of-a-string-c-sharp
             string formel = zahlenFeld.Text;
             zahlenFeld.Text = formel.TrimEnd(digits);
+
+            if (formel.Substring(formel.Length - 2, formel.Length) == "+-") //minuszahlen bei ce muss man noch fixen
+            {
+
+            }
         }
     }
 }
