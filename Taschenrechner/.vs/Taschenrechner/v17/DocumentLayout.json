@@ -34,9 +34,9 @@
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\Taschenrechner\\Form1.cs",
               "RelativeDocumentMoniker": "Taschenrechner\\Form1.cs",
-              "ToolTip": "C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\Taschenrechner\\Form1.cs",
-              "RelativeToolTip": "Taschenrechner\\Form1.cs",
-              "ViewState": "AQIAAP0AAAAAKDMzMzMDwA0BAABTAAAA",
+              "ToolTip": "C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\Taschenrechner\\Form1.cs*",
+              "RelativeToolTip": "Taschenrechner\\Form1.cs*",
+              "ViewState": "AQIAAPkAAACAzMzMzMwNwAgBAACxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-25T08:14:23.178Z",
               "EditorCaption": ""
@@ -51,8 +51,7 @@
               "RelativeToolTip": "Taschenrechner\\Form1.Designer.cs",
               "ViewState": "AQIAAN0AAAAAAAAAAAAtwPYAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T06:14:39.209Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-25T06:14:39.209Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "ToolTip": "C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\Taschenrechner\\Form1.resx",
               "RelativeToolTip": "Taschenrechner\\Form1.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2024-04-25T06:14:38.093Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-25T06:14:38.093Z"
             },
             {
               "$type": "Document",
@@ -75,8 +73,7 @@
               "ToolTip": "C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\Taschenrechner\\Form1.cs [Entwurf]",
               "RelativeToolTip": "Taschenrechner\\Form1.cs [Entwurf]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T05:45:31.852Z",
-              "EditorCaption": " [Entwurf]"
+              "WhenOpened": "2024-04-25T05:45:31.852Z"
             }
           ]
         }

@@ -262,13 +262,9 @@ namespace Taschenrechner
 
         private void ce_Click(object sender, EventArgs e)
         {
+            var digits = new[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' }; https://stackoverflow.com/questions/27289054/removing-numbers-at-the-end-of-a-string-c-sharp
             string formel = zahlenFeld.Text;
-            bool operantTest;
-            operantTest = char.IsDigit(formel.Last());//https://code-maze.com/csharp-check-if-string-ends-with-a-number/ um zu testen, ob die Formel mit einem Operanten endet
-            if (operantTest)
-            {
-                zahlenFeld.Text = formel.Remove(formel.Length - 1, 1); // entfernt 
-            }
+            zahlenFeld.Text = formel.TrimEnd(digits);
         }
     }
 }
