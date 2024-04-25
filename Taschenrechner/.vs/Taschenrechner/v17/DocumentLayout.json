@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{D17FEC21-058B-45F8-A4AD-79427FD712B9}|Taschenrechner\\Taschenrechner.csproj|solutionrelative:taschenrechner\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D17FEC21-058B-45F8-A4AD-79427FD712B9}|Taschenrechner\\Taschenrechner.csproj|C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\taschenrechner\\form1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
-      "RelativeMoniker": "D:0:0:{D17FEC21-058B-45F8-A4AD-79427FD712B9}|Taschenrechner\\Taschenrechner.csproj|solutionrelative:taschenrechner\\form1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
+      "AbsoluteMoniker": "D:0:0:{D17FEC21-058B-45F8-A4AD-79427FD712B9}|Taschenrechner\\Taschenrechner.csproj|C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\taschenrechner\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D17FEC21-058B-45F8-A4AD-79427FD712B9}|Taschenrechner\\Taschenrechner.csproj|solutionrelative:taschenrechner\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D17FEC21-058B-45F8-A4AD-79427FD712B9}|Taschenrechner\\Taschenrechner.csproj|C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\taschenrechner\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D17FEC21-058B-45F8-A4AD-79427FD712B9}|Taschenrechner\\Taschenrechner.csproj|solutionrelative:taschenrechner\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D17FEC21-058B-45F8-A4AD-79427FD712B9}|Taschenrechner\\Taschenrechner.csproj|C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\taschenrechner\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D17FEC21-058B-45F8-A4AD-79427FD712B9}|Taschenrechner\\Taschenrechner.csproj|solutionrelative:taschenrechner\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{D17FEC21-058B-45F8-A4AD-79427FD712B9}|Taschenrechner\\Taschenrechner.csproj|C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\taschenrechner\\form1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
+      "RelativeMoniker": "D:0:0:{D17FEC21-058B-45F8-A4AD-79427FD712B9}|Taschenrechner\\Taschenrechner.csproj|solutionrelative:taschenrechner\\form1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,9 +34,9 @@
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\Taschenrechner\\Form1.cs",
               "RelativeDocumentMoniker": "Taschenrechner\\Form1.cs",
-              "ToolTip": "C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\Taschenrechner\\Form1.cs*",
-              "RelativeToolTip": "Taschenrechner\\Form1.cs*",
-              "ViewState": "AQIAAEoAAAAAAAAAAAAUwPYAAAAaAAAA",
+              "ToolTip": "C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\Taschenrechner\\Form1.cs",
+              "RelativeToolTip": "Taschenrechner\\Form1.cs",
+              "ViewState": "AQIAAP0AAAAAKDMzMzMDwA0BAABTAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-25T08:14:23.178Z",
               "EditorCaption": ""
@@ -49,14 +49,14 @@
               "RelativeDocumentMoniker": "Taschenrechner\\Form1.Designer.cs",
               "ToolTip": "C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\Taschenrechner\\Form1.Designer.cs",
               "RelativeToolTip": "Taschenrechner\\Form1.Designer.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAIAAAA",
+              "ViewState": "AQIAAN0AAAAAAAAAAAAtwPYAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-25T06:14:39.209Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Form1.resx",
               "DocumentMoniker": "C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\Taschenrechner\\Form1.resx",
               "RelativeDocumentMoniker": "Taschenrechner\\Form1.resx",
@@ -68,12 +68,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Form1.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\Taschenrechner\\Form1.cs",
               "RelativeDocumentMoniker": "Taschenrechner\\Form1.cs",
-              "ToolTip": "C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\Taschenrechner\\Form1.cs [Entwurf]*",
-              "RelativeToolTip": "Taschenrechner\\Form1.cs [Entwurf]*",
+              "ToolTip": "C:\\Users\\a\\Documents\\GitHub\\Taschenrechner\\Taschenrechner\\Taschenrechner\\Form1.cs [Entwurf]",
+              "RelativeToolTip": "Taschenrechner\\Form1.cs [Entwurf]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-25T05:45:31.852Z",
               "EditorCaption": " [Entwurf]"

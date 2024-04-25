@@ -48,7 +48,7 @@
             this.zahlenFeld = new System.Windows.Forms.TextBox();
             this.backspace = new System.Windows.Forms.Button();
             this.c = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ce = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // zahl1
@@ -239,8 +239,10 @@
             // 
             // zahlenFeld
             // 
+            this.zahlenFeld.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.zahlenFeld.Location = new System.Drawing.Point(219, 48);
             this.zahlenFeld.Name = "zahlenFeld";
+            this.zahlenFeld.ReadOnly = true;
             this.zahlenFeld.Size = new System.Drawing.Size(320, 20);
             this.zahlenFeld.TabIndex = 21;
             // 
@@ -266,22 +268,23 @@
             this.c.UseVisualStyleBackColor = true;
             this.c.Click += new System.EventHandler(this.c_Click);
             // 
-            // button3
+            // ce
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(545, 217);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 75);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "CE";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ce.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ce.Location = new System.Drawing.Point(545, 217);
+            this.ce.Name = "ce";
+            this.ce.Size = new System.Drawing.Size(75, 75);
+            this.ce.TabIndex = 24;
+            this.ce.Text = "CE";
+            this.ce.UseVisualStyleBackColor = true;
+            this.ce.Click += new System.EventHandler(this.ce_Click);
             // 
             // Rechner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 586);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.ce);
             this.Controls.Add(this.c);
             this.Controls.Add(this.backspace);
             this.Controls.Add(this.zahlenFeld);
@@ -332,7 +335,7 @@
         private System.Windows.Forms.TextBox zahlenFeld;
         private System.Windows.Forms.Button backspace;
         private System.Windows.Forms.Button c;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button ce;
     }
 }
 

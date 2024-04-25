@@ -259,5 +259,16 @@ namespace Taschenrechner
         {
             zahlenFeld.Text = ""; // entfernt den ganzen Textinhalt
         }
+
+        private void ce_Click(object sender, EventArgs e)
+        {
+            string formel = zahlenFeld.Text;
+            bool operantTest;
+            operantTest = char.IsDigit(formel.Last());//https://code-maze.com/csharp-check-if-string-ends-with-a-number/ um zu testen, ob die Formel mit einem Operanten endet
+            if (operantTest)
+            {
+                zahlenFeld.Text = formel.Remove(formel.Length - 1, 1); // entfernt 
+            }
+        }
     }
 }
