@@ -159,7 +159,7 @@
             this.zahl0.TabIndex = 9;
             this.zahl0.Text = "0";
             this.zahl0.UseVisualStyleBackColor = true;
-            this.zahl0.Click += new System.EventHandler(this.zahl1_Click);
+            this.zahl0.Click += new System.EventHandler(this.zahl0_Click);
             // 
             // buttonKomma
             // 
