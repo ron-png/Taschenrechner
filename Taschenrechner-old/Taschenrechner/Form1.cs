@@ -268,11 +268,6 @@ namespace Taschenrechner
             var digits = new[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',' }; // https://stackoverflow.com/questions/27289054/removing-numbers-at-the-end-of-a-string-c-sharp
             string formel = zahlenFeld.Text;
             zahlenFeld.Text = formel.TrimEnd(digits);
-
-            if (formel.Substring(formel.Length - 2, formel.Length) == "+-") //minuszahlen bei ce muss man noch fixen
-            {
-
-            }
         }
 
         private void zahlenFeld_TextChanged(object sender, EventArgs e)
