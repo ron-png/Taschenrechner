@@ -19,9 +19,12 @@ namespace Taschenrechner
         // sehr hilfreich war https://github.com/windson/Calculator-Winforms/
         // auch: https://github.com/microsoft/calculator und https://github.com/scaretos/taschenrechner/
 
-        
-        int counter = 0; // counter wird gebraucht um zu zählen, ob die letzte Angabe ein rechenoperator war
-        int kommacounter = 0;
+        // Listen die jeweils den Operator und die Zahl speichern
+        private readonly List<string> operators = new List<string>();
+
+        private readonly List<double> input = new List<double>();
+
+        bool ClearInput;
 
         public Rechner()
         {
@@ -34,17 +37,14 @@ namespace Taschenrechner
         }
 
         private void zahl1_Click(object sender, EventArgs e)
-        // 9 Verweise, alles verwiesen, somit programmieren wir alle Buttons in Einem
+        // 11 Verweise, Diese beinhalten die Zahlen 0 bis 9 und ein Komma
         {
             this.zahlenFeld.Text += ((Button)sender).Text;
-            counter = 0; // resettet den counter, weil die letzte Eingabe kein Operant oder Komma mehr ist
+             // resettet den counter, weil die letzte Eingabe kein Operant oder Komma mehr ist
         }
 
         private void zahl0_Click(object sender, EventArgs e)
-        // 10 Verweise, alles verwiesen, somit programmieren wir alle Buttons in Einem
         {
-            this.zahlenFeld.Text += ((Button)sender).Text;
-            counter = 0; // resettet den counter, weil die letzte Eingabe kein Operant oder Komma mehr ist
         }
 
         private void zahlenFeld_Click(object sender, EventArgs e)
@@ -54,12 +54,7 @@ namespace Taschenrechner
 
         private void buttonMal_Click(object sender, EventArgs e)
         {
-            if (counter == 0)
-            {
-                this.zahlenFeld.Text += ((Button)sender).Text;
-                counter++;
-                kommacounter = 0;
-            }
+            
         }
 
         private void buttonPlus_Click(object sender, EventArgs e)
@@ -99,12 +94,7 @@ namespace Taschenrechner
 
         private void buttonKomma_Click(object sender, EventArgs e)
         {
-            if (counter == 0 && kommacounter == 0)
-            {
-                this.zahlenFeld.Text += ",";
-                counter++;
-                kommacounter++;
-            }
+            
         }
 
         private void backspace_Click(object sender, EventArgs e)

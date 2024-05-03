@@ -37,7 +37,7 @@ namespace Taschenrechner
         private void zahl1_Click(object sender, EventArgs e)
         // 10 Verweise, alles verwiesen, somit programmieren wir alle Buttons in Einem
         {
-            this.zahlenFeld.Text += ((Button)sender).Text;
+            zahlenFeld.Text += ((Button)sender).Text;
             counter = 0; // resettet den counter, weil die letzte Eingabe kein Operant oder Komma mehr ist
         }
 
@@ -50,7 +50,7 @@ namespace Taschenrechner
         {
             if (counter == 0)
             {
-                this.zahlenFeld.Text += ((Button)sender).Text;
+                zahlenFeld.Text += ((Button)sender).Text;
                 counter++;
                 kommacounter = 0;
             }
@@ -68,7 +68,16 @@ namespace Taschenrechner
 
         private void buttonMinus_Click(object sender, EventArgs e)
         {
-
+            if (counter == 0)
+            {
+                zahlenFeld.Text += ((Button)sender).Text;
+                counter++;
+                kommacounter = 0;
+            }
+            else if (counter == 1)
+            {
+                zahlenFeld.Text += "(-)";
+            }
         }
 
         private void buttonGleich_Click(object sender, EventArgs e)
@@ -265,7 +274,7 @@ namespace Taschenrechner
 
         private void ce_Click(object sender, EventArgs e)
         {
-            var digits = new[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',' }; // https://stackoverflow.com/questions/27289054/removing-numbers-at-the-end-of-a-string-c-sharp
+            var digits = new[] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',' }; // https://stackoverflow.com/questions/27289054/removing-numbers-at-the-end-of-a-string-c-sharp
             string formel = zahlenFeld.Text;
             zahlenFeld.Text = formel.TrimEnd(digits);
         }

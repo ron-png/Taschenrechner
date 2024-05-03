@@ -213,7 +213,7 @@
             this.buttonMinus.TabIndex = 14;
             this.buttonMinus.Text = "-";
             this.buttonMinus.UseVisualStyleBackColor = true;
-            this.buttonMinus.Click += new System.EventHandler(this.buttonMal_Click);
+            this.buttonMinus.Click += new System.EventHandler(this.buttonMinus_Click);
             // 
             // buttonMal
             // 
@@ -240,9 +240,10 @@
             // zahlenFeld
             // 
             this.zahlenFeld.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.zahlenFeld.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.zahlenFeld.Location = new System.Drawing.Point(219, 48);
             this.zahlenFeld.Name = "zahlenFeld";
-            this.zahlenFeld.Size = new System.Drawing.Size(320, 20);
+            this.zahlenFeld.Size = new System.Drawing.Size(401, 29);
             this.zahlenFeld.TabIndex = 21;
             this.zahlenFeld.TextChanged += new System.EventHandler(this.zahlenFeld_TextChanged);
             // 
