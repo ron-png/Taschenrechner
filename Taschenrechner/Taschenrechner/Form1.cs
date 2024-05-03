@@ -48,7 +48,7 @@ namespace Taschenrechner
 
         private void zahl0_Click(object sender, EventArgs e)
         {
-            
+          // comment   
         }
 
         private void zahlenFeld_Click(object sender, EventArgs e)
