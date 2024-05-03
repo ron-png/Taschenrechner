@@ -25,6 +25,8 @@ namespace Taschenrechner
         private readonly List<double> input = new List<double>();
 
         bool ClearInput;
+        public int nullcounter, kommacounter;
+        
 
         public Rechner()
         {
@@ -37,14 +39,16 @@ namespace Taschenrechner
         }
 
         private void zahl1_Click(object sender, EventArgs e)
-        // 11 Verweise, Diese beinhalten die Zahlen 0 bis 9 und ein Komma
+        // 9 Verweise, Diese beinhalten die Zahlen 1 bis 9 
         {
             this.zahlenFeld.Text += ((Button)sender).Text;
-             // resettet den counter, weil die letzte Eingabe kein Operant oder Komma mehr ist
+            // resettet den counter, weil die letzte Eingabe kein Operant oder Komma mehr ist
+            nullcounter = 0;
         }
 
         private void zahl0_Click(object sender, EventArgs e)
         {
+            
         }
 
         private void zahlenFeld_Click(object sender, EventArgs e)
