@@ -49,6 +49,7 @@
             this.backspace = new System.Windows.Forms.Button();
             this.c = new System.Windows.Forms.Button();
             this.ce = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // zahl1
@@ -240,9 +241,11 @@
             // zahlenFeld
             // 
             this.zahlenFeld.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.zahlenFeld.Location = new System.Drawing.Point(219, 48);
+            this.zahlenFeld.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zahlenFeld.Location = new System.Drawing.Point(219, 182);
             this.zahlenFeld.Name = "zahlenFeld";
-            this.zahlenFeld.Size = new System.Drawing.Size(401, 20);
+            this.zahlenFeld.ReadOnly = true;
+            this.zahlenFeld.Size = new System.Drawing.Size(401, 29);
             this.zahlenFeld.TabIndex = 21;
             this.zahlenFeld.TextChanged += new System.EventHandler(this.zahlenFeld_TextChanged);
             // 
@@ -279,11 +282,23 @@
             this.ce.UseVisualStyleBackColor = true;
             this.ce.Click += new System.EventHandler(this.ce_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(221, 147);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(401, 29);
+            this.textBox1.TabIndex = 25;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // Rechner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 586);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.ce);
             this.Controls.Add(this.c);
             this.Controls.Add(this.backspace);
@@ -336,6 +351,7 @@
         private System.Windows.Forms.Button backspace;
         private System.Windows.Forms.Button c;
         private System.Windows.Forms.Button ce;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
