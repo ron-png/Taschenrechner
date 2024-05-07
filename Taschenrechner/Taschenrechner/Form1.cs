@@ -127,7 +127,23 @@ namespace Taschenrechner
         // Zahlen negieren kek
         private void vorZeichen_Click(object sender, EventArgs e)
         {
-            
+            double zahl;
+            zahl = Convert.ToDouble(zahlenFeld.Text);
+
+            if (zahl > 0)
+            {
+                zahl = -Math.Abs(zahl); //.abs absolute Wert der Zahl, also immer ohne minus 
+            }
+            else if (zahl < 0)
+            {
+                zahl =  Math.Abs(zahl);
+            }
+            else // zahl == 0
+            {
+                zahl = 0; // 0 bleibt unverändert
+            }
+
+            zahlenFeld.Text = Convert.ToString(zahl);
         }
 
         private void buttonMal_Click(object sender, EventArgs e)
@@ -208,7 +224,7 @@ namespace Taschenrechner
                         break;
                     case "/":
                         if (nextNumber == 0)
-                            return "Teilen durch Null ist nicht erlaubt"; // duh
+                            return "Teilen durch Null ist nicht möglich"; // duh
                         result = result / nextNumber;
                         break;
                     default:
