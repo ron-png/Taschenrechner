@@ -25,6 +25,7 @@ namespace Taschenrechner
 
         bool clearInput; // falls die Textbox gecleart werden muss
         bool kommacounter; // um zu gucken, ob schon ein Komma eingegeben wurde. Habe vorher "counter"´genutzt, jedoch jetzt bool
+        bool berechnet; // wenn gleich gedrückt wurde
 
         public Rechner()
         {
@@ -84,6 +85,13 @@ namespace Taschenrechner
             if (zahlenFeld.Text.EndsWith(","))
             { 
                 zahlenFeld.Text = zahlenFeld.Text.Substring(0, zahlenFeld.Text.Length - 1); // Falls die Eingabe mit einem Komma endet
+            }
+            if (berechnet)
+            {
+                operators.Clear();
+                numbers.Clear();
+                textBox1.Clear();
+                berechnet = false;
             }
 
             numbers.Add(Convert.ToDouble(zahlenFeld.Text.Replace(',', '.'))); // konvertiert die eingegebene Zahl zu double und fügt diese zu Liste hinzu
@@ -151,48 +159,55 @@ namespace Taschenrechner
 
         private void buttonGleich_Click(object sender, EventArgs e)
         {
-            
+            if (berechnet)
+            {
+                return;
+            }
+            double result = Calculate(numbers, (Convert.ToDouble(zahlenFeld.Text.Replace(',', '.'))), operators);
+            textBox1.Text += zahlenFeld.Text + "=";
+            zahlenFeld.Text = Convert.ToString(result);
+            clearInput = true;
+            berechnet = true;
         }
 
         #region MATHE 
         // Berechne das zeug
-        private double Calculate(double number1, double number2, string mathOperator)
+        private double Calculate(List<double> numbers, double currentNumber, List<string> operators)
         {
 
-            if (string.IsNullOrEmpty(mathOperator))
-                throw new ArithmeticException("Kein Operator übergeben");
-
-            double result;
-
-            // Switch um entsprechende Rechnung auszuführen
-            switch (mathOperator)
+            if (operators.Count == 0)
             {
-                case "+":
-                    result = number1 + number2;
-                    break;
-
-                case "-":
-                    result = number1 - number2;
-                    break;
-
-                case "*":
-                    result = number1 * number2;
-                    break;
-
-                case "/":
-                    if (number2 == 0)
-                    {
-                        throw new ArithmeticException("Teilen durch 0 nicht möglich");
-                    }
-                    else
-                    {
-                        result = number1 / number2;
-                    }
-                    break;
-
-                default:
-                    throw new ArithmeticException(mathOperator + " ist kein gültiger Operator");
+                return currentNumber; // Falls keine Operationen vorhanden sind, gib die aktuelle Zahl zurück
             }
+
+            double result = currentNumber; // Setze das Ergebnis auf die aktuelle Zahl
+
+            for (int i = 0; i < operators.Count; i++)
+            {
+                double nextNumber = numbers[i];
+                string currentOperator = operators[i];
+
+                switch (currentOperator)
+                {
+                    case "+":
+                        result += nextNumber;
+                        break;
+                    case "-":
+                        result -= nextNumber;
+                        break;
+                    case "*":
+                        result *= nextNumber;
+                        break;
+                    case "/":
+                        if (nextNumber == 0)
+                            throw new ArithmeticException("Teilen durch Null ist nicht erlaubt");
+                        result /= nextNumber;
+                        break;
+                    default:
+                        throw new ArithmeticException("Ungültiger Operator: " + currentOperator);
+                }
+            }
+
             return result;
         }
 
