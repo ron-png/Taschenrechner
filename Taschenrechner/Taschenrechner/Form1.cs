@@ -207,7 +207,8 @@ namespace Taschenrechner
             #region nachbereitungen
             try
             {
-                Convert.ToDouble(zahlenFeld.Text); // Wenn die Rechenformel eine Fehlermeldung ausgibt, wird hiermit 
+                Convert.ToDouble(zahlenFeld.Text); // Wenn die Rechenformel eine Fehlermeldung ausgibt, wird hiermit getestet
+                                                   // ob eine Fehlermeldung ausgespuckt wurde
             }
             catch
             {
