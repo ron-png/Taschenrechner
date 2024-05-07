@@ -182,6 +182,7 @@
             this.vorZeichen.TabIndex = 11;
             this.vorZeichen.Text = "+/-";
             this.vorZeichen.UseVisualStyleBackColor = true;
+            this.vorZeichen.Click += new System.EventHandler(this.vorZeichen_Click);
             // 
             // buttonGleich
             // 
