@@ -243,7 +243,7 @@
             // 
             this.zahlenFeld.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.zahlenFeld.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zahlenFeld.Location = new System.Drawing.Point(219, 101);
+            this.zahlenFeld.Location = new System.Drawing.Point(219, 182);
             this.zahlenFeld.Name = "zahlenFeld";
             this.zahlenFeld.ReadOnly = true;
             this.zahlenFeld.Size = new System.Drawing.Size(401, 29);
@@ -287,10 +287,12 @@
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(219, 66);
+            this.textBox1.Location = new System.Drawing.Point(219, 12);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(401, 29);
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(401, 164);
             this.textBox1.TabIndex = 25;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
