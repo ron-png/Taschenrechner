@@ -24,9 +24,9 @@ namespace Taschenrechner
         private readonly List<double> numbers = new List<double>(); // Liste mit Zahlen
 
         bool clearInput; // falls die Textbox gecleart werden muss
-        bool kommacounter; // um zu gucken, ob schon ein Komma eingegeben wurde. Habe vorher "counter"´genutzt, jedoch jetzt bool
+        bool allowKomma; // um zu gucken, ob schon ein Komma eingegeben wurde. Habe vorher "counter"´genutzt, jedoch jetzt bool
         bool berechnet; // wenn gleich gedrückt wurde
-        bool fullclear; // wird bei String Fehlermeldung gebraucht
+        bool fullclear; // wird bei String Fehlermeldung gebraucht, damit der String nicht als "Zahl" übernommen wird
 
         public Rechner()
         {
@@ -52,12 +52,12 @@ namespace Taschenrechner
             if (clearInput)
             {
                 zahlenFeld.Clear();
-                clearInput = false;
+                clearInput = false; // muss wieder auf falsé gestellt werden, weil die Zahlen sonst immer rausgeschmissen werden
             }
             // Zahlenfeld Eingabe 
             zahlenFeld.Text += ((Button)sender).Text;
 
-            fullclear = false;
+            fullclear = false; //fullclear wird nicht gebraucht, weil die Zahl das Feld mit der Fehlermeldung ersetzt
         }
         private void zahl0_Click(object sender, EventArgs e)
         {
@@ -73,7 +73,7 @@ namespace Taschenrechner
             }
 
             zahlenFeld.Text += ((Button)sender).Text; // Null eingeben
-            fullclear = false;
+            fullclear = false; //fullclear wird nicht gebraucht, weil die Zahl das Feld mit der Fehlermeldung ersetzt
 
         }
 
@@ -81,71 +81,77 @@ namespace Taschenrechner
 
         private void buttonKomma_Click(object sender, EventArgs e)
         {
-            if (kommacounter)
+            if (allowKomma) // wenn allowKomma true, dann kann kein weiteres Komma eingegeben werden
             {
                 return;
             }
             else if (clearInput)
             {
-                zahlenFeld.Text = "0,"; // falls nach einem Operator direkt ein Komma eingegeben wird
+                zahlenFeld.Text = "0,"; // falls nach einem Operator direkt ein Komma eingegeben wird, wird automatisch die Null davor geschrieben
+                clearInput = false;
             }
             else
             {
-                zahlenFeld.Text += ",";
+                zahlenFeld.Text += ","; // sonst einach normal das Komma eingeben
             }
             
-            kommacounter = true;
-            clearInput = false;
+            allowKomma = true; // allowKomma wird auf True geschaltet, weil wir sonst mehrere Kommas hintereinander eingeben können
         }
 
         private void backspace_Click(object sender, EventArgs e)
         {
             string formel = zahlenFeld.Text;
-            if (formel.Length > 0)
+            // die Zahl wird pro Click úm eins reduziert
+            if (formel.Length > 0) // das geschieht, wenn die Länge des Strings das auch hergibt
             {
                 zahlenFeld.Text = formel.Remove(formel.Length - 1, 1); //https://www.c-sharpcorner.com/blogs/remove-last-character-from-string-in-c-sharp1
             }
-            else
+            else //sonst wird einfach eine Null angezeigt
             {
                 nullanzeige();
             }
         }
 
+        // alles löschen
         private void c_Click(object sender, EventArgs e)
         {
-            nullanzeige();
-            textBox1.Clear();
-            operators.Clear();
-            numbers.Clear();
+
+            nullanzeige(); // zeigt die Null an
+            textBox1.Clear(); // bereinigt die obere Textbox
+            operators.Clear(); // bereinigt die Liste mit den Operatoren
+            numbers.Clear(); // bereinigt die Liste mit den Zahlen
         }
 
+        // löscht nur die untere Reihe
         private void ce_Click(object sender, EventArgs e)
         {
-            nullanzeige();
+            nullanzeige(); // zeigt die Null an
         }
 
         // Zahlen negieren kek
         private void vorZeichen_Click(object sender, EventArgs e)
         {
-            double zahl;
-            zahl = Convert.ToDouble(zahlenFeld.Text);
+            double zahl; //einfach die Zahl zum negieren
+            zahl = Convert.ToDouble(zahlenFeld.Text); //hier wird die Zahl geladen
 
-            if (zahl > 0)
+            if (zahl > 0) // wenn die zahl Größer als null, dann minuszahl erstellen
             {
                 zahl = -Math.Abs(zahl); //.abs absolute Wert der Zahl, also immer ohne minus 
             }
             else if (zahl < 0)
             {
-                zahl =  Math.Abs(zahl);
-            }
-            else // zahl == 0
+                zahl =  Math.Abs(zahl); // wenn die zahl kleiner als null, dann plus erstellen
+            }                           //.abs absolute Wert der Zahl, also immer ohne minus
+            else // zahl == 0           
             {
                 zahl = 0; // 0 bleibt unverändert
             }
 
-            zahlenFeld.Text = Convert.ToString(zahl);
+            zahlenFeld.Text = Convert.ToString(zahl); // die Zahl wird hier wieder ins Zahlenfeld ausgespuckt
         }
 
+
+        // operanten
         private void buttonMal_Click(object sender, EventArgs e)
         {
             if (zahlenFeld.Text.EndsWith(","))
@@ -167,51 +173,76 @@ namespace Taschenrechner
             numbers.Add(Convert.ToDouble(zahlenFeld.Text/*.Replace(',', '.')*/)); // konvertiert die eingegebene Zahl zu double und fügt diese zu Liste hinzu
             operators.Add(((Button)sender).Text); // fügt die den Operanten in eine Liste Hinzu
             textBox1.Text += zahlenFeld.Text + ((Button)sender).Text; // fuegt die Zahlen ins obere Feld ein
-            clearInput = true; // markiert, um das Feld für neuen Input "frei" zu machen
-            kommacounter = false; // Komma kann jetzt auch eingegeben werden
+            clearInput = true; // markiert, um das Feld für neuen Input "frei" zu machen // Vormerkung, damit die nächste Zahl eingegeben werden kann
+            allowKomma = false; // Komma kann jetzt auch wieder eingegeben werden
         }
 
         private void buttonGleich_Click(object sender, EventArgs e)
         {
-            if (berechnet)
+            // Prüfung, ob gerechnet werden kann
+            #region vorbereitungen für die Berechnung
+            if (berechnet) // wenn schon einmal das gleichzeichen gedrückt wurde, kann es nicht nochmal eine
+                           // Berechnung ausführen. somit Wird irgendeine Dummheit vermieden
             {
                 return;
             }
-            numbers.Add(Convert.ToDouble(zahlenFeld.Text/*.Replace(',', '.')*/));
-            textBox1.Text += zahlenFeld.Text + "=";
-            zahlenFeld.Text = Calculate(numbers, operators);
-            
+
+
+            try // Versucht, die letzte eingegebene Zahl in die Liste hinzuzufügen
+            {
+                numbers.Add(Convert.ToDouble(zahlenFeld.Text/*.Replace(',', '.')*/));
+            }
+            catch // falls es nicht klappt, wird einfach nichts berechnet
+            {
+                return;
+            }
+
+            #endregion
+
+            //Berechnung
+            textBox1.Text += zahlenFeld.Text + "="; // zeigt einfach Gleichzeichen, um die Formel schön zu machen
+            zahlenFeld.Text = Calculate(numbers, operators); // Ruft die berechnung auf und gibt das Ergebnis in die Textbox aus
+
+            // Das Behandeln von Fehlermeldungen und par Variabeln auf True setzen
+            #region nachbereitungen
             try
             {
-                Convert.ToDouble(zahlenFeld.Text);
+                Convert.ToDouble(zahlenFeld.Text); // Wenn die Rechenformel eine Fehlermeldung ausgibt, wird hiermit 
             }
             catch
             {
                 fullclear = true;
             }
 
-            clearInput = true;
-            berechnet = true;
+            clearInput = true; //Vormerkung, damit die nächste Zahl eingegeben werden kann
+            berechnet = true; //damit das Gleichzeichen keine Faxen macht
+            #endregion
         }
 
         #region MATHE 
         // Berechne das zeug
         private string Calculate(List<double> numbers, List<string> operators)
         {
-            int numberscounter = 1;
-            if (operators.Count == 0)
+            
+            if (operators.Count == 0) // wenn es keine operatoren gibt, word die Erste Zahl der Liste zurückgegeben
             {
                 return Convert.ToString(numbers[0]); // Falls keine Operationen vorhanden sind, gib die aktuelle Zahl zurück
             }
 
-            double result = numbers[0]; // Setze das Ergebnis auf die aktuelle Zahl
+            double result = numbers[0]; // Setze das Ergebnis auf die erste Zahl der Liste und "Arbeite" ausgehend von der Zahl.
+                                        // Für Punkt vor Strichrechnung muss man sich noch was besseres Überlegen
 
-            for (int i = 0; i < operators.Count; i++)
+
+            int numberscounter = 1; // Numberscounter ist auf 1, was in der folgenden Funktion dann die Zweite Zahl in der Liste anspricht.
+                                    // Die erste Zahl wird schon in result genutzt
+            for (int i = 0; i < operators.Count; i++)  // geht die beiden Listen durch der Operators count ist als exitfaktor für i genutzt
             {
-                double nextNumber = numbers[numberscounter];
-                string currentOperator = operators[i];
+                double nextNumber = numbers[numberscounter]; // nextnumber ist also die nächste nummer in der Liste
+                string currentOperator = operators[i]; // der aktuelle Operator in der Liste
                 numberscounter++;
-                switch (currentOperator)
+
+                                        
+                switch (currentOperator) // Switch case für die operanten undso
                 {
                     case "+":
                         result = result + nextNumber;
@@ -224,7 +255,8 @@ namespace Taschenrechner
                         break;
                     case "/":
                         if (nextNumber == 0)
-                            return "Teilen durch Null ist nicht möglich"; // duh
+                            return "Teilen durch Null ist nicht möglich"; // duh, Schmeißt die Fehlermeldung raus, daher ist die Ausgabe der
+                                                                          // Mathefunktion auch ein string und kein double
                         result = result / nextNumber;
                         break;
                     default:
@@ -232,7 +264,7 @@ namespace Taschenrechner
                 }
             }
 
-            return Convert.ToString(result);
+            return Convert.ToString(result); //Ausgabe, wenn die Berechnung erfolgreich war!
         }
 
         #endregion
