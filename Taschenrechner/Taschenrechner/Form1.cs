@@ -25,7 +25,8 @@ namespace Taschenrechner
 
         bool clearInput; // falls die Textbox gecleart werden muss
         bool berechnet; // wenn gleich gedrückt wurde
-        bool fullclear; // wird bei String Fehlermeldung gebraucht, damit der String nicht als "Zahl" übernommen wird
+        bool fullclear; // wird bei String Fehlermeldung gebraucht, damit der String nicht als
+                        // "Zahl" übernommen wird
 
         public Rechner()
         {
@@ -39,7 +40,8 @@ namespace Taschenrechner
         // kleine Funktoin, um die Null anzuzeigen
         private void nullanzeige()
         {
-            zahlenFeld.Text = "0";// unteres Zahlenfeld einfach eine Null wie beim Windows Taschenrechner
+            zahlenFeld.Text = "0";// unteres Zahlenfeld einfach eine Null wie beim Windows
+                                  // Taschenrechner
             clearInput = true; //clearinput, damit die null "ersetzt" wird
         }
 
@@ -50,22 +52,26 @@ namespace Taschenrechner
             if (clearInput || advancedOperators)
             {
                 zahlenFeld.Clear();
-                clearInput = false; // muss wieder auf falsé gestellt werden, weil die Zahlen sonst immer rausgeschmissen werden
+                clearInput = false; // muss wieder auf falsé gestellt werden, weil die Zahlen
+                                    // sonst immer rausgeschmissen werden
                 advancedOperators = false;
             }
             // Zahlenfeld Eingabe 
             zahlenFeld.Text += ((Button)sender).Text;
 
-            fullclear = false; //fullclear wird nicht gebraucht, weil die Zahl das Feld mit der Fehlermeldung ersetzt
+            fullclear = false; //fullclear wird nicht gebraucht, weil die Zahl das Feld mit der
+                               //Fehlermeldung ersetzt
         }
         private void zahl0_Click(object sender, EventArgs e)
         {
             // wenn es ein null komma gibt
-            if (zahlenFeld.Text == "0") //nichts, weil mehrere Nullen hintereinandeer keinen Sinn ergeben
+            if (zahlenFeld.Text == "0") //nichts, weil mehrere Nullen hintereinandeer keinen
+                                        //Sinn ergeben
             {
                 return; // raus da
             }
-            else if (clearInput || advancedOperators) // gleiches Bereinigungsschema wie bei den anderen Zahlen
+            else if (clearInput || advancedOperators) // gleiches Bereinigungsschema wie bei
+                                                      // den anderen Zahlen
             {
                 zahlenFeld.Clear();
                 clearInput = false;
@@ -73,7 +79,8 @@ namespace Taschenrechner
             }
 
             zahlenFeld.Text += ((Button)sender).Text; // Null eingeben
-            fullclear = false; //fullclear wird nicht gebraucht, weil die Zahl das Feld mit der Fehlermeldung ersetzt
+            fullclear = false; //fullclear wird nicht gebraucht, weil die Zahl das Feld mit der
+                               //Fehlermeldung ersetzt
         }
 
 
@@ -399,7 +406,7 @@ namespace Taschenrechner
 
             //Berechnung
 
-            zahlenFeld.Text = Calculate(numbers, operators); // Ruft die berechnung auf und
+            zahlenFeld.Text = Calculate2(numbers, operators); // Ruft die berechnung auf und
                                                              // gibt das Ergebnis in die Textbox aus
 
             // Das Behandeln von Fehlermeldungen und par Variabeln auf True setzen
@@ -422,9 +429,10 @@ namespace Taschenrechner
 
         #region MATHE 
         // Berechne das zeug
-        private string Calculate(List<double> numbers, List<string> operators)
+        
+
+        private string Calculate2(List<double> numbers, List<string> operators)
         {
-            
             if (operators.Count == 0) // wenn es keine operatoren gibt, word die Erste Zahl
                                       // der Liste zurückgegeben
             {
@@ -432,71 +440,78 @@ namespace Taschenrechner
                                                      // gib die aktuelle Zahl zurück
             }
 
-            double result = numbers[0]; // Setze das Ergebnis auf die erste Zahl der Liste und
-                                        // "Arbeite" ausgehend von der Zahl.
-                                        // Für Punkt vor Strichrechnung muss man sich noch was
-                                        // besseres Überlegen
+            PerformMultiplicationsAndDivisions(numbers, operators);
 
+            double result = numbers[0];
 
-            int numberscounter = 1; // Numberscounter ist auf 1, was in der folgenden Funktion
-                                    // dann die Zweite Zahl in der Liste anspricht.
-                                    // Die erste Zahl wird schon in result genutzt
-            for (int i = 0; i < operators.Count; i++)  // geht die beiden Listen durch der
-                                                       // Operators count ist als exitfaktor für i
-                                                       // genutzt
+            for (int i = 0; i < operators.Count; i++)
             {
-                double nextNumber = numbers[numberscounter]; // nextnumber ist also die nächste
-                                                             // nummer in der Liste
-                string currentOperator = operators[i]; // der aktuelle Operator in der Liste
-                numberscounter++;
+                double nextNumber = numbers[i + 1];
+                string currentOperator = operators[i];
 
-                                        
-                switch (currentOperator) // Switch case für die operanten undso
+                switch (currentOperator)
                 {
                     case "+":
-                        result = result + nextNumber;
+                        result += nextNumber;
                         break;
                     case "-":
-                        result = result - nextNumber;
-                        break;
-                    case "*":
-                        result = result * nextNumber;
-                        break;
-                    case "/":
-                        if (nextNumber == 0)
-                            return "Teilen durch Null ist nicht möglich"; // duh, Schmeißt die
-                                                                          // Fehlermeldung raus, daher
-                                                                          // ist die Ausgabe der
-                                                                          // Mathefunktion auch ein
-                                                                          // string und kein double
-                        result = result / nextNumber;
+                        result -= nextNumber;
                         break;
                     default:
-                        return "Ungültiger Operator: " + currentOperator; // falls unbekannter
-                                                                          // operator kek
+                        return "Ungültiger Operator: " + currentOperator;
                 }
             }
 
-            return Convert.ToString(result); //Ausgabe, wenn die Berechnung erfolgreich war!
-        }
-        private string higherprio()
-        {
-            return "1";
+            return result.ToString();
         }
 
-        private string highestprio()
+        private void PerformMultiplicationsAndDivisions(List<double> numbers, List<string> operators)
         {
-            return "1";
+            for (int i = 0; i < operators.Count;)
+            {
+                if (operators[i] == "*" || operators[i] == "/")
+                {
+                    double operand1 = numbers[i];
+                    double operand2 = numbers[i + 1];
+                    string currentOperator = operators[i];
+
+                    double intermediateResult = 0.0;
+                    switch (currentOperator)
+                    {
+                        case "*":
+                            intermediateResult = operand1 * operand2;
+                            break;
+                        case "/":
+                            if (operand2 == 0)
+                                textBox1.Text = "Teilen durch 0 ist nicht erlaubt";
+                            intermediateResult = operand1 / operand2;
+                            break;
+                    }
+
+                    // Ersetze operand1 und operand2 durch das Zwischenergebnis
+                    numbers[i] = intermediateResult;
+                    numbers.RemoveAt(i + 1);
+                    operators.RemoveAt(i);
+                }
+                else
+                {
+                    // Wenn kein * oder / gefunden wurde, gehe zum nächsten Operator
+                    i++;
+                }
+            }
         }
+
 
         #endregion
 
-        
+
 
 
 
 
         #region ungenutzes Zeug
+
+        
         private void buttonPlus_Click(object sender, EventArgs e)
         {
 
@@ -583,7 +598,6 @@ namespace Taschenrechner
         {
 
         }
-
         #endregion
 
 
