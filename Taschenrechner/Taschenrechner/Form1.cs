@@ -49,7 +49,12 @@ namespace Taschenrechner
         // 9 Verweise, alles verwiesen, somit programmieren wir alle Buttons in Einem
         {
             // zur Bereinigung des Zahlenfelds
-            if (clearInput || advancedOperators)
+            if (powerclicked)
+            {
+                clearInput = false;
+                advancedOperators = false;
+            }
+            else if (clearInput || advancedOperators)
             {
                 zahlenFeld.Clear();
                 clearInput = false; // muss wieder auf falsé gestellt werden, weil die Zahlen
@@ -69,6 +74,11 @@ namespace Taschenrechner
                                         //Sinn ergeben
             {
                 return; // raus da
+            }
+            else if (powerclicked)
+            {
+                clearInput = false;
+                advancedOperators = false;
             }
             else if (clearInput || advancedOperators) // gleiches Bereinigungsschema wie bei
                                                       // den anderen Zahlen
@@ -251,10 +261,21 @@ namespace Taschenrechner
 
         private void power_Click(object sender, EventArgs e)
         {
+            if (zahlenFeld.Text.EndsWith(","))
+            {
+                zahlenFeld.Text = zahlenFeld.Text.Substring(0,
+                    zahlenFeld.Text.Length - 1); // Falls die Eingabe mit
+                                                 // einem Komma endet
+            }
             if (berechnet)
             {
-                textBox1.Clear();
+                //textBox1.Clear();
                 GleichGedrueckt();
+                //berechnet = false;
+            }
+            if (fullclear) // wenn es einen fehler gab, dann ist fullclear auf true
+            {
+                nullanzeige();
             }
             string zahl = zahlenFeld.Text;
             try
@@ -334,7 +355,7 @@ namespace Taschenrechner
                     textBox1.Text += Convert.ToString(powernumbers[0]) + "^" + 
                         Convert.ToString(powernumbers[1]) + ((Button)sender).Text;
                     powernumbers.Clear();
-                    powerclicked =false;
+                    powerclicked = false;
                 }
                 else
                 {
