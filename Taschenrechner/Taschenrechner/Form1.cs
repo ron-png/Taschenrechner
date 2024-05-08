@@ -24,7 +24,6 @@ namespace Taschenrechner
         private readonly List<double> numbers = new List<double>(); // Liste mit Zahlen
 
         bool clearInput; // falls die Textbox gecleart werden muss
-        bool allowKomma; // um zu gucken, ob schon ein Komma eingegeben wurde. Habe vorher "counter"´genutzt, jedoch jetzt bool
         bool berechnet; // wenn gleich gedrückt wurde
         bool fullclear; // wird bei String Fehlermeldung gebraucht, damit der String nicht als "Zahl" übernommen wird
 
@@ -77,11 +76,11 @@ namespace Taschenrechner
 
         }
 
-        
 
+        bool denyKomma; // um zu gucken, ob schon ein Komma eingegeben wurde. Habe vorher "counter"´genutzt, jedoch jetzt bool
         private void buttonKomma_Click(object sender, EventArgs e)
         {
-            if (allowKomma) // wenn allowKomma true, dann kann kein weiteres Komma eingegeben werden
+            if (denyKomma) // wenn denyKomma true, dann kann kein weiteres Komma eingegeben werden
             {
                 return;
             }
@@ -95,7 +94,7 @@ namespace Taschenrechner
                 zahlenFeld.Text += ","; // sonst einach normal das Komma eingeben
             }
             
-            allowKomma = true; // allowKomma wird auf True geschaltet, weil wir sonst mehrere Kommas hintereinander eingeben können
+            denyKomma = true; // denyKomma wird auf True geschaltet, weil wir sonst mehrere Kommas hintereinander eingeben können
         }
 
         private void backspace_Click(object sender, EventArgs e)
@@ -152,29 +151,78 @@ namespace Taschenrechner
 
 
         // operanten
+
+        bool wurzelGenommen;
+        private void wurzel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                double wurzelnummer;
+                zahlenFeld.Text = zahlenFeld.Text.TrimStart('√');
+                textBox1.Text += "√" + "("+ zahlenFeld.Text + ")";
+                wurzelnummer = Math.Sqrt(Convert.ToDouble(zahlenFeld.Text));
+                zahlenFeld.Text = Convert.ToString(wurzelnummer);
+                wurzelGenommen = true;
+            }
+            catch
+            {
+                return;
+            }
+        }
+        private void sinus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cosinus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tangens_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void buttonMal_Click(object sender, EventArgs e)
         {
             if (zahlenFeld.Text.EndsWith(","))
             {
                 zahlenFeld.Text = zahlenFeld.Text.Substring(0, zahlenFeld.Text.Length - 1); // Falls die Eingabe mit einem Komma endet
             }
-            if (berechnet)
+            if (berechnet) // Wenn das Gleichzeichen gedrueckt wurde, wird folgendes ausgefuert
             {
-                operators.Clear();
-                numbers.Clear();
-                textBox1.Clear();
-                berechnet = false;
+                operators.Clear(); // operatoren werden geleert
+                numbers.Clear(); // zahlen werden geleert 
+                textBox1.Clear(); // Obere Formel wird entfernt
+                berechnet = false; // gleichzeichen wieder auf normal
             }
-            if (fullclear)
+            if (fullclear) // wenn es einen fehler gab, dann ist fullclear auf true
             {
                 nullanzeige();
             }
 
-            numbers.Add(Convert.ToDouble(zahlenFeld.Text/*.Replace(',', '.')*/)); // konvertiert die eingegebene Zahl zu double und fügt diese zu Liste hinzu
-            operators.Add(((Button)sender).Text); // fügt die den Operanten in eine Liste Hinzu
-            textBox1.Text += zahlenFeld.Text + ((Button)sender).Text; // fuegt die Zahlen ins obere Feld ein
+            try
+            {
+                numbers.Add(Convert.ToDouble(zahlenFeld.Text/*.Replace(',', '.')*/)); // konvertiert die eingegebene Zahl zu double und fügt diese zu Liste hinzu
+                operators.Add(((Button)sender).Text); // fügt die den Operanten in eine Liste Hinzu
+                if (wurzelGenommen)
+                {
+                    textBox1.Text += ((Button)sender).Text;
+                }
+                else
+                {
+                    textBox1.Text += zahlenFeld.Text + ((Button)sender).Text; // fuegt die Zahlen ins obere Feld ein       
+                }
+            }
+            catch
+            {
+                zahlenFeld.Text = "Fehler!";
+                fullclear = true;
+            }
+
             clearInput = true; // markiert, um das Feld für neuen Input "frei" zu machen // Vormerkung, damit die nächste Zahl eingegeben werden kann
-            allowKomma = false; // Komma kann jetzt auch wieder eingegeben werden
+            denyKomma = false; // Komma kann jetzt auch wieder eingegeben werden
         }
 
         private void buttonGleich_Click(object sender, EventArgs e)
@@ -186,7 +234,7 @@ namespace Taschenrechner
             {
                 return;
             }
-
+            
 
             try // Versucht, die letzte eingegebene Zahl in die Liste hinzuzufügen
             {
@@ -197,10 +245,21 @@ namespace Taschenrechner
                 return;
             }
 
+
+            if (wurzelGenommen)
+            {
+                textBox1.Text += "="; // zeigt einfach Gleichzeichen, um die Formel schön zu machen
+            }
+            else
+            {
+                textBox1.Text += zahlenFeld.Text + "="; // zeigt einfach Gleichzeichen, um die Formel schön zu machen
+
+            }
+
             #endregion
 
             //Berechnung
-            textBox1.Text += zahlenFeld.Text + "="; // zeigt einfach Gleichzeichen, um die Formel schön zu machen
+
             zahlenFeld.Text = Calculate(numbers, operators); // Ruft die berechnung auf und gibt das Ergebnis in die Textbox aus
 
             // Das Behandeln von Fehlermeldungen und par Variabeln auf True setzen
@@ -267,10 +326,19 @@ namespace Taschenrechner
 
             return Convert.ToString(result); //Ausgabe, wenn die Berechnung erfolgreich war!
         }
+        private string higherprio()
+        {
+            return "1";
+        }
+
+        private string highestprio()
+        {
+            return "1";
+        }
 
         #endregion
 
-
+        
 
 
 
@@ -311,6 +379,9 @@ namespace Taschenrechner
         }
 
 
+
         #endregion
+
+
     }
 }
