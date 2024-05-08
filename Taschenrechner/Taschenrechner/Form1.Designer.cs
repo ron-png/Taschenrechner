@@ -54,6 +54,8 @@
             this.sinus = new System.Windows.Forms.Button();
             this.cosinus = new System.Windows.Forms.Button();
             this.tangens = new System.Windows.Forms.Button();
+            this.power = new System.Windows.Forms.Button();
+            this.power2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // zahl1
@@ -292,12 +294,12 @@
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(219, 155);
+            this.textBox1.Location = new System.Drawing.Point(219, 113);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.textBox1.Size = new System.Drawing.Size(301, 21);
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(301, 63);
             this.textBox1.TabIndex = 25;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -346,11 +348,35 @@
             this.tangens.UseVisualStyleBackColor = true;
             this.tangens.Click += new System.EventHandler(this.wurzel_Click);
             // 
+            // power
+            // 
+            this.power.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.power.Location = new System.Drawing.Point(526, 329);
+            this.power.Name = "power";
+            this.power.Size = new System.Drawing.Size(50, 50);
+            this.power.TabIndex = 30;
+            this.power.Text = "^";
+            this.power.UseVisualStyleBackColor = true;
+            this.power.Click += new System.EventHandler(this.power_Click);
+            // 
+            // power2
+            // 
+            this.power2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.power2.Location = new System.Drawing.Point(526, 273);
+            this.power2.Name = "power2";
+            this.power2.Size = new System.Drawing.Size(50, 50);
+            this.power2.TabIndex = 31;
+            this.power2.Text = "^2";
+            this.power2.UseVisualStyleBackColor = true;
+            this.power2.Click += new System.EventHandler(this.wurzel_Click);
+            // 
             // Rechner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 586);
+            this.Controls.Add(this.power2);
+            this.Controls.Add(this.power);
             this.Controls.Add(this.tangens);
             this.Controls.Add(this.cosinus);
             this.Controls.Add(this.sinus);
@@ -413,6 +439,8 @@
         private System.Windows.Forms.Button sinus;
         private System.Windows.Forms.Button cosinus;
         private System.Windows.Forms.Button tangens;
+        private System.Windows.Forms.Button power;
+        private System.Windows.Forms.Button power2;
     }
 }
 

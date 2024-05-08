@@ -39,7 +39,6 @@ namespace Taschenrechner
         // kleine Funktoin, um die Null anzuzeigen
         private void nullanzeige()
         {
-
             zahlenFeld.Text = "0";// unteres Zahlenfeld einfach eine Null wie beim Windows Taschenrechner
             clearInput = true; //clearinput, damit die null "ersetzt" wird
         }
@@ -48,10 +47,11 @@ namespace Taschenrechner
         // 9 Verweise, alles verwiesen, somit programmieren wir alle Buttons in Einem
         {
             // zur Bereinigung des Zahlenfelds
-            if (clearInput)
+            if (clearInput || advancedOperators)
             {
                 zahlenFeld.Clear();
                 clearInput = false; // muss wieder auf falsé gestellt werden, weil die Zahlen sonst immer rausgeschmissen werden
+                advancedOperators = false;
             }
             // Zahlenfeld Eingabe 
             zahlenFeld.Text += ((Button)sender).Text;
@@ -65,19 +65,20 @@ namespace Taschenrechner
             {
                 return; // raus da
             }
-            else if (clearInput) // gleiches Bereinigungsschema wie bei den anderen Zahlen
+            else if (clearInput || advancedOperators) // gleiches Bereinigungsschema wie bei den anderen Zahlen
             {
                 zahlenFeld.Clear();
                 clearInput = false;
+                advancedOperators = false;
             }
 
             zahlenFeld.Text += ((Button)sender).Text; // Null eingeben
             fullclear = false; //fullclear wird nicht gebraucht, weil die Zahl das Feld mit der Fehlermeldung ersetzt
-
         }
 
 
-        bool denyKomma; // um zu gucken, ob schon ein Komma eingegeben wurde. Habe vorher "counter"´genutzt, jedoch jetzt bool
+        bool denyKomma; // um zu gucken, ob schon ein Komma eingegeben wurde.
+                        // Habe vorher "counter"´genutzt, jedoch jetzt bool
         private void buttonKomma_Click(object sender, EventArgs e)
         {
             if (denyKomma) // wenn denyKomma true, dann kann kein weiteres Komma eingegeben werden
@@ -146,16 +147,102 @@ namespace Taschenrechner
                 zahl = 0; // 0 bleibt unverändert
             }
 
-            zahlenFeld.Text = Convert.ToString(zahl); // die Zahl wird hier wieder ins Zahlenfeld ausgespuckt
+            zahlenFeld.Text = Convert.ToString(zahl); // die Zahl wird hier wieder ins
+                                                      // Zahlenfeld ausgespuckt
         }
 
 
         // operanten
         #region advancedFeatures
         bool advancedOperators;
-
-
+        bool lastclickadvanced;
+        string lastinput;
+        
         private void wurzel_Click(object sender, EventArgs e)
+        {
+            string zahl = zahlenFeld.Text;
+            if (berechnet)
+            {
+                textBox1.Clear();
+                GleichGedrueckt();
+            }
+            else if (lastclickadvanced)
+            {
+                if (((Button)sender).Text == "√")
+                {
+                    textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length-lastinput.Length);
+                    lastclickadvanced = false;
+                }
+                else if (((Button)sender).Text == "sin")
+                {
+                    textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - lastinput.Length);
+                    lastclickadvanced = false;
+
+                }
+                else if (((Button)sender).Text == "cos")
+                {
+                    textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - lastinput.Length);
+                    lastclickadvanced = false;
+
+                }
+                else if (((Button)sender).Text == "tan")
+                {
+                    textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - lastinput.Length);
+                    lastclickadvanced = false;
+
+                }
+                else if (((Button)sender).Text == "^2")
+                {
+                    textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - lastinput.Length);
+                    lastclickadvanced = false;
+
+                }
+            } 
+            try
+            {
+                if (((Button)sender).Text == "√")
+                {
+                    zahlenFeld.Text = Convert.ToString(Math.Sqrt(Convert.ToDouble(zahlenFeld.Text)));
+                    textBox1.Text += ((Button)sender).Text + "(" + zahl + ")";
+                    lastinput = ((Button)sender).Text + "(" + zahl + ")";
+                }
+                else if (((Button)sender).Text == "sin")
+                {
+                    zahlenFeld.Text = Convert.ToString(Math.Sin(Convert.ToDouble(zahlenFeld.Text)));
+                    textBox1.Text += ((Button)sender).Text + "(" + zahl + ")";
+                    lastinput = ((Button)sender).Text + "(" + zahl + ")";
+                }
+                else if (((Button)sender).Text == "cos")
+                {
+                    zahlenFeld.Text = Convert.ToString(Math.Cos(Convert.ToDouble(zahlenFeld.Text)));
+                    textBox1.Text += ((Button)sender).Text + "(" + zahl + ")";
+                    lastinput = ((Button)sender).Text + "(" + zahl + ")";
+                }
+                else if (((Button)sender).Text == "tan")
+                {
+                    zahlenFeld.Text = Convert.ToString(Math.Tan(Convert.ToDouble(zahlenFeld.Text)));
+                    textBox1.Text += ((Button)sender).Text + "(" + zahl + ")";
+                    lastinput = ((Button)sender).Text + "(" + zahl + ")";
+                }
+                else if (((Button)sender).Text == "^2")
+                {
+                    zahlenFeld.Text = Convert.ToString(Math.Pow(Convert.ToDouble(zahlenFeld.Text), 2));
+                    textBox1.Text += "(" + zahl + ")" + ((Button)sender).Text;
+                    lastinput = "(" + zahl + ")" + ((Button)sender).Text;
+                }
+                advancedOperators = true;
+                lastclickadvanced = true;
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        bool powerclicked;
+        private readonly List<double> powernumbers = new List<double>(); // Liste mit Zahlen
+
+        private void power_Click(object sender, EventArgs e)
         {
             if (berechnet)
             {
@@ -165,31 +252,17 @@ namespace Taschenrechner
             string zahl = zahlenFeld.Text;
             try
             {
-                if (((Button)sender).Text == "√")
-                {
-                    zahlenFeld.Text = Convert.ToString(Math.Sqrt(Convert.ToDouble(zahlenFeld.Text)));
-                }
-                else if (((Button)sender).Text == "sin")
-                {
-                    zahlenFeld.Text = Convert.ToString(Math.Sin(Convert.ToDouble(zahlenFeld.Text)));
-                }
-                else if (((Button)sender).Text == "cos")
-                {
-                    zahlenFeld.Text = Convert.ToString(Math.Cos(Convert.ToDouble(zahlenFeld.Text)));
-                }
-                else if (((Button)sender).Text == "tan")
-                {
-                    zahlenFeld.Text = Convert.ToString(Math.Tan(Convert.ToDouble(zahlenFeld.Text)));
-                }
-                textBox1.Text += ((Button)sender).Text + "("+ zahl + ")";
-                advancedOperators = true;
+                powernumbers.Add(Convert.ToDouble(zahlenFeld.Text));
+                zahlenFeld.Text += ((Button)sender).Text;
+                powerclicked = true;
             }
             catch
             {
                 return;
             }
         }
-        private void GleichGedrueckt() //Wenn Gleich gedrueckt wird, muss die alte Formel und Zahlen geloescht werden
+        private void GleichGedrueckt() //Wenn Gleich gedrueckt wird, muss die alte Formel
+                                       //und Zahlen geloescht werden
         {
             operators.Clear(); // operatoren werden geleert
             numbers.Clear(); // zahlen werden geleert 
@@ -197,11 +270,20 @@ namespace Taschenrechner
             berechnet = false; // gleichzeichen wieder auf normal
         }
         #endregion
+        private void endOfCalculation()
+        {
+            advancedOperators = false;
+            clearInput = true; //Vormerkung, damit die nächste Zahl eingegeben werden kann
+            berechnet = true; //damit das Gleichzeichen keine Faxen macht
+        }
+
         private void buttonMal_Click(object sender, EventArgs e)
         {
             if (zahlenFeld.Text.EndsWith(","))
             {
-                zahlenFeld.Text = zahlenFeld.Text.Substring(0, zahlenFeld.Text.Length - 1); // Falls die Eingabe mit einem Komma endet
+                zahlenFeld.Text = zahlenFeld.Text.Substring(0, 
+                    zahlenFeld.Text.Length - 1); // Falls die Eingabe mit
+                                                 // einem Komma endet
             }
             if (berechnet) // Wenn das Gleichzeichen gedrueckt wurde, wird folgendes ausgefuert
             {
@@ -211,19 +293,46 @@ namespace Taschenrechner
             {
                 nullanzeige();
             }
+            #region hochrechnen
+            if (powerclicked)
+            {
+                try
+                {
+                    powernumbers.Add(Convert.ToDouble(zahlenFeld.Text.Substring
+                        (zahlenFeld.Text.IndexOf('^') + 1)));
+                }
+                catch //wenn keine zweite Zahl eingegeben wurde 
+                {
+                    powernumbers.Add(2);
+                }
+                zahlenFeld.Text = Convert.ToString(Math.Pow(powernumbers[0], powernumbers[1]));
+            }
+            #endregion
 
             try
             {
-                numbers.Add(Convert.ToDouble(zahlenFeld.Text/*.Replace(',', '.')*/)); // konvertiert die eingegebene Zahl zu double und fügt diese zu Liste hinzu
+                numbers.Add(Convert.ToDouble(zahlenFeld.Text/*.Replace(',', '.')*/)); // konvertiert
+                                                                                      // die eingegebene
+                                                                                      // Zahl zu double
+                                                                                      // und fügt diese
+                                                                                      // zu Liste hinzu
                 operators.Add(((Button)sender).Text); // fügt die den Operanten in eine Liste Hinzu
                 if (advancedOperators)
                 {
                     textBox1.Text += ((Button)sender).Text;
-                    advancedOperators = false;
+                    
+                }
+                else if (powerclicked)
+                {
+                    textBox1.Text += Convert.ToString(powernumbers[0]) + "^" + 
+                        Convert.ToString(powernumbers[1]) + ((Button)sender).Text;
+                    powernumbers.Clear();
+                    powerclicked =false;
                 }
                 else
                 {
-                    textBox1.Text += zahlenFeld.Text + ((Button)sender).Text; // fuegt die Zahlen ins obere Feld ein       
+                    textBox1.Text += zahlenFeld.Text + ((Button)sender).Text; // fuegt die Zahlen
+                                                                              // ins obere Feld ein                                                     
                 }
             }
             catch
@@ -232,24 +341,54 @@ namespace Taschenrechner
                 fullclear = true;
             }
 
-            clearInput = true; // markiert, um das Feld für neuen Input "frei" zu machen // Vormerkung, damit die nächste Zahl eingegeben werden kann
-            denyKomma = false; // Komma kann jetzt auch wieder eingegeben werden
+
+            advancedOperators = false;
+            clearInput = true; //Vormerkung, damit die nächste Zahl eingegeben werden kann
         }
 
         private void buttonGleich_Click(object sender, EventArgs e)
         {
             // Prüfung, ob gerechnet werden kann
             #region vorbereitungen für die Berechnung
-            if (berechnet) // wenn schon einmal das gleichzeichen gedrückt wurde, kann es nicht nochmal eine
+            if (berechnet) // wenn schon einmal das gleichzeichen gedrückt wurde, kann es nicht
+                           // nochmal eine
                            // Berechnung ausführen. somit Wird irgendeine Dummheit vermieden
             {
                 return;
             }
-            
+
+            if (powerclicked)
+            {
+                try
+                {
+                    powernumbers.Add(Convert.ToDouble(zahlenFeld.Text.
+                        Substring(zahlenFeld.Text.IndexOf('^') + 1)));
+                }
+                catch //wenn keine zweite Zahl eingegeben wurde 
+                {
+                    powernumbers.Add(2);
+                }
+                zahlenFeld.Text = Convert.ToString(Math.Pow(powernumbers[0], powernumbers[1]));
+            }
 
             try // Versucht, die letzte eingegebene Zahl in die Liste hinzuzufügen
             {
                 numbers.Add(Convert.ToDouble(zahlenFeld.Text/*.Replace(',', '.')*/));
+                if (advancedOperators)
+                {
+                    textBox1.Text += "=";
+                }
+                else if (powerclicked)
+                {
+                    textBox1.Text += Convert.ToString(powernumbers[0]) + "^" + 
+                        Convert.ToString(powernumbers[1]) + ((Button)sender).Text;
+                    powernumbers.Clear();
+                    powerclicked = false;
+                }
+                else
+                {
+                    textBox1.Text += zahlenFeld.Text + "=";
+                }
             }
             catch // falls es nicht klappt, wird einfach nichts berechnet
             {
@@ -260,13 +399,15 @@ namespace Taschenrechner
 
             //Berechnung
 
-            zahlenFeld.Text = Calculate(numbers, operators); // Ruft die berechnung auf und gibt das Ergebnis in die Textbox aus
+            zahlenFeld.Text = Calculate(numbers, operators); // Ruft die berechnung auf und
+                                                             // gibt das Ergebnis in die Textbox aus
 
             // Das Behandeln von Fehlermeldungen und par Variabeln auf True setzen
             #region nachbereitungen
             try
             {
-                Convert.ToDouble(zahlenFeld.Text); // Wenn die Rechenformel eine Fehlermeldung ausgibt, wird hiermit getestet
+                Convert.ToDouble(zahlenFeld.Text); // Wenn die Rechenformel eine Fehlermeldung
+                                                   // ausgibt, wird hiermit getestet
                                                    // ob eine Fehlermeldung ausgespuckt wurde
             }
             catch
@@ -274,8 +415,8 @@ namespace Taschenrechner
                 fullclear = true;
             }
 
-            clearInput = true; //Vormerkung, damit die nächste Zahl eingegeben werden kann
-            berechnet = true; //damit das Gleichzeichen keine Faxen macht
+
+            endOfCalculation();
             #endregion
         }
 
@@ -284,20 +425,28 @@ namespace Taschenrechner
         private string Calculate(List<double> numbers, List<string> operators)
         {
             
-            if (operators.Count == 0) // wenn es keine operatoren gibt, word die Erste Zahl der Liste zurückgegeben
+            if (operators.Count == 0) // wenn es keine operatoren gibt, word die Erste Zahl
+                                      // der Liste zurückgegeben
             {
-                return Convert.ToString(numbers[0]); // Falls keine Operationen vorhanden sind, gib die aktuelle Zahl zurück
+                return Convert.ToString(numbers[0]); // Falls keine Operationen vorhanden sind,
+                                                     // gib die aktuelle Zahl zurück
             }
 
-            double result = numbers[0]; // Setze das Ergebnis auf die erste Zahl der Liste und "Arbeite" ausgehend von der Zahl.
-                                        // Für Punkt vor Strichrechnung muss man sich noch was besseres Überlegen
+            double result = numbers[0]; // Setze das Ergebnis auf die erste Zahl der Liste und
+                                        // "Arbeite" ausgehend von der Zahl.
+                                        // Für Punkt vor Strichrechnung muss man sich noch was
+                                        // besseres Überlegen
 
 
-            int numberscounter = 1; // Numberscounter ist auf 1, was in der folgenden Funktion dann die Zweite Zahl in der Liste anspricht.
+            int numberscounter = 1; // Numberscounter ist auf 1, was in der folgenden Funktion
+                                    // dann die Zweite Zahl in der Liste anspricht.
                                     // Die erste Zahl wird schon in result genutzt
-            for (int i = 0; i < operators.Count; i++)  // geht die beiden Listen durch der Operators count ist als exitfaktor für i genutzt
+            for (int i = 0; i < operators.Count; i++)  // geht die beiden Listen durch der
+                                                       // Operators count ist als exitfaktor für i
+                                                       // genutzt
             {
-                double nextNumber = numbers[numberscounter]; // nextnumber ist also die nächste nummer in der Liste
+                double nextNumber = numbers[numberscounter]; // nextnumber ist also die nächste
+                                                             // nummer in der Liste
                 string currentOperator = operators[i]; // der aktuelle Operator in der Liste
                 numberscounter++;
 
@@ -315,12 +464,16 @@ namespace Taschenrechner
                         break;
                     case "/":
                         if (nextNumber == 0)
-                            return "Teilen durch Null ist nicht möglich"; // duh, Schmeißt die Fehlermeldung raus, daher ist die Ausgabe der
-                                                                          // Mathefunktion auch ein string und kein double
+                            return "Teilen durch Null ist nicht möglich"; // duh, Schmeißt die
+                                                                          // Fehlermeldung raus, daher
+                                                                          // ist die Ausgabe der
+                                                                          // Mathefunktion auch ein
+                                                                          // string und kein double
                         result = result / nextNumber;
                         break;
                     default:
-                        return "Ungültiger Operator: " + currentOperator; // falls unbekannter operator kek
+                        return "Ungültiger Operator: " + currentOperator; // falls unbekannter
+                                                                          // operator kek
                 }
             }
 
@@ -426,6 +579,10 @@ namespace Taschenrechner
             }*/
         }
 
+        private void power2_Click(object sender, EventArgs e)
+        {
+
+        }
 
         #endregion
 
