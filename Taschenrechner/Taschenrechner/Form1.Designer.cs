@@ -322,7 +322,7 @@
             this.sinus.TabIndex = 27;
             this.sinus.Text = "sin";
             this.sinus.UseVisualStyleBackColor = true;
-            this.sinus.Click += new System.EventHandler(this.sinus_Click);
+            this.sinus.Click += new System.EventHandler(this.wurzel_Click);
             // 
             // cosinus
             // 
@@ -333,7 +333,7 @@
             this.cosinus.TabIndex = 28;
             this.cosinus.Text = "cos";
             this.cosinus.UseVisualStyleBackColor = true;
-            this.cosinus.Click += new System.EventHandler(this.cosinus_Click);
+            this.cosinus.Click += new System.EventHandler(this.wurzel_Click);
             // 
             // tangens
             // 
@@ -344,7 +344,7 @@
             this.tangens.TabIndex = 29;
             this.tangens.Text = "tan";
             this.tangens.UseVisualStyleBackColor = true;
-            this.tangens.Click += new System.EventHandler(this.tangens_Click);
+            this.tangens.Click += new System.EventHandler(this.wurzel_Click);
             // 
             // Rechner
             // 

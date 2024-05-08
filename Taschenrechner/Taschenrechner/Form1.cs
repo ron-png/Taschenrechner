@@ -151,39 +151,52 @@ namespace Taschenrechner
 
 
         // operanten
+        #region advancedFeatures
+        bool advancedOperators;
 
-        bool wurzelGenommen;
+
         private void wurzel_Click(object sender, EventArgs e)
         {
+            if (berechnet)
+            {
+                textBox1.Clear();
+                GleichGedrueckt();
+            }
+            string zahl = zahlenFeld.Text;
             try
             {
-                double wurzelnummer;
-                zahlenFeld.Text = zahlenFeld.Text.TrimStart('√');
-                textBox1.Text += "√" + "("+ zahlenFeld.Text + ")";
-                wurzelnummer = Math.Sqrt(Convert.ToDouble(zahlenFeld.Text));
-                zahlenFeld.Text = Convert.ToString(wurzelnummer);
-                wurzelGenommen = true;
+                if (((Button)sender).Text == "√")
+                {
+                    zahlenFeld.Text = Convert.ToString(Math.Sqrt(Convert.ToDouble(zahlenFeld.Text)));
+                }
+                else if (((Button)sender).Text == "sin")
+                {
+                    zahlenFeld.Text = Convert.ToString(Math.Sin(Convert.ToDouble(zahlenFeld.Text)));
+                }
+                else if (((Button)sender).Text == "cos")
+                {
+                    zahlenFeld.Text = Convert.ToString(Math.Cos(Convert.ToDouble(zahlenFeld.Text)));
+                }
+                else if (((Button)sender).Text == "tan")
+                {
+                    zahlenFeld.Text = Convert.ToString(Math.Tan(Convert.ToDouble(zahlenFeld.Text)));
+                }
+                textBox1.Text += ((Button)sender).Text + "("+ zahl + ")";
+                advancedOperators = true;
             }
             catch
             {
                 return;
             }
         }
-        private void sinus_Click(object sender, EventArgs e)
+        private void GleichGedrueckt() //Wenn Gleich gedrueckt wird, muss die alte Formel und Zahlen geloescht werden
         {
-
+            operators.Clear(); // operatoren werden geleert
+            numbers.Clear(); // zahlen werden geleert 
+            textBox1.Clear(); // Obere Formel wird entfernt
+            berechnet = false; // gleichzeichen wieder auf normal
         }
-
-        private void cosinus_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tangens_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        #endregion
         private void buttonMal_Click(object sender, EventArgs e)
         {
             if (zahlenFeld.Text.EndsWith(","))
@@ -192,10 +205,7 @@ namespace Taschenrechner
             }
             if (berechnet) // Wenn das Gleichzeichen gedrueckt wurde, wird folgendes ausgefuert
             {
-                operators.Clear(); // operatoren werden geleert
-                numbers.Clear(); // zahlen werden geleert 
-                textBox1.Clear(); // Obere Formel wird entfernt
-                berechnet = false; // gleichzeichen wieder auf normal
+                GleichGedrueckt();
             }
             if (fullclear) // wenn es einen fehler gab, dann ist fullclear auf true
             {
@@ -206,9 +216,10 @@ namespace Taschenrechner
             {
                 numbers.Add(Convert.ToDouble(zahlenFeld.Text/*.Replace(',', '.')*/)); // konvertiert die eingegebene Zahl zu double und fügt diese zu Liste hinzu
                 operators.Add(((Button)sender).Text); // fügt die den Operanten in eine Liste Hinzu
-                if (wurzelGenommen)
+                if (advancedOperators)
                 {
                     textBox1.Text += ((Button)sender).Text;
+                    advancedOperators = false;
                 }
                 else
                 {
@@ -243,17 +254,6 @@ namespace Taschenrechner
             catch // falls es nicht klappt, wird einfach nichts berechnet
             {
                 return;
-            }
-
-
-            if (wurzelGenommen)
-            {
-                textBox1.Text += "="; // zeigt einfach Gleichzeichen, um die Formel schön zu machen
-            }
-            else
-            {
-                textBox1.Text += zahlenFeld.Text + "="; // zeigt einfach Gleichzeichen, um die Formel schön zu machen
-
             }
 
             #endregion
@@ -378,6 +378,53 @@ namespace Taschenrechner
 
         }
 
+        private void sinus_Click(object sender, EventArgs e)
+        {
+            /*try
+            {
+                double zahl;
+                textBox1.Text += "sin" + "(" + zahlenFeld.Text + ")";
+                zahl = Math.Sin(Convert.ToDouble(zahlenFeld.Text));
+                zahlenFeld.Text = Convert.ToString(zahl);
+                advancedOperators = true;
+            }
+            catch
+            {
+                return;
+            }*/
+        }
+
+        private void cosinus_Click(object sender, EventArgs e)
+        {
+            /*try
+            {
+                double zahl;
+                textBox1.Text += "cos" + "(" + zahlenFeld.Text + ")";
+                zahl = Math.Cos(Convert.ToDouble(zahlenFeld.Text));
+                zahlenFeld.Text = Convert.ToString(zahl);
+                advancedOperators = true;
+            }
+            catch
+            {
+                return;
+            }*/
+        }
+
+        private void tangens_Click(object sender, EventArgs e)
+        {
+            /*try
+            {
+                double zahl;
+                textBox1.Text += "tan" + "(" + zahlenFeld.Text + ")";
+                zahl = Math.Tan(Convert.ToDouble(zahlenFeld.Text));
+                zahlenFeld.Text = Convert.ToString(zahl);
+                advancedOperators = true;
+            }
+            catch
+            {
+                return;
+            }*/
+        }
 
 
         #endregion
