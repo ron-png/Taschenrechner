@@ -283,6 +283,7 @@ namespace Taschenrechner
                 powernumbers.Add(Convert.ToDouble(zahlenFeld.Text));
                 zahlenFeld.Text += ((Button)sender).Text;
                 powerclicked = true;
+                denyKomma = false;
             }
             catch
             {
